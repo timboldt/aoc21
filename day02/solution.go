@@ -60,6 +60,20 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
+	var pos, depth, aim int
 	ops := parseInput(input)
-	return len(ops)
+	for _, op := range ops {
+		switch op.cmd {
+		case forward:
+			pos += op.val
+			depth += aim * op.val
+		case up:
+			aim -= op.val
+		case down:
+			aim += op.val
+		default:
+			panic("invalid op command")
+		}
+	}
+	return pos * depth
 }
