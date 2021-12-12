@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Part1(input string) int {
+func parseInput(input string) []int {
 	var vals []int
 	for _, line := range strings.Split(input, "\n") {
 		i, err := strconv.Atoi(line)
@@ -16,6 +16,11 @@ func Part1(input string) int {
 		}
 		vals = append(vals, i)
 	}
+	return vals
+}
+
+func Part1(input string) int {
+	vals := parseInput(input)
 	prevVal := math.MaxInt
 	increases := 0
 	for _, val := range vals {
@@ -28,5 +33,15 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
-	return 42
+	vals := parseInput(input)
+	prevVal := math.MaxInt
+	increases := 0
+	for idx := 0; idx < len(vals)-2; idx++ {
+		val := vals[idx] + vals[idx+1] + vals[idx+2]
+		if val > prevVal {
+			increases++
+		}
+		prevVal = val
+	}
+	return increases
 }
