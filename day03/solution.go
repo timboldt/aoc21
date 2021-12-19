@@ -1,7 +1,6 @@
 package day03
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -62,8 +61,8 @@ func Part2(input string) int {
 			scrubMask += mask
 		}
 	}
-	fmt.Println(oxyMask)
-	fmt.Println(scrubMask)
+	// fmt.Println(oxyMask)
+	// fmt.Println(scrubMask)
 
 	var oxy, scrub int
 	oxyResid := math.MaxInt
@@ -81,8 +80,8 @@ func Part2(input string) int {
 			scrubResid = resid
 		}
 	}
-	fmt.Println(oxy)
-	fmt.Println(scrub)
+	// fmt.Println(oxy)
+	// fmt.Println(scrub)
 
 	return oxy * scrub
 }
