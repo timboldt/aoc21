@@ -1,6 +1,8 @@
 package day03
 
 import (
+	"fmt"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -43,6 +45,44 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
-	_, bits := parseInput(input)
-	return bits
+	vals, bits := parseInput(input)
+	var oxyMask, scrubMask int
+	for bit := 0; bit < bits; bit++ {
+		mask := 1 << bit
+		cnt := 0
+		for _, val := range vals {
+			if val&mask != 0 {
+				cnt++
+			}
+		}
+		if cnt >= len(vals)/2 {
+			oxyMask += mask
+		}
+		if cnt <= len(vals)/2 {
+			scrubMask += mask
+		}
+	}
+	fmt.Println(oxyMask)
+	fmt.Println(scrubMask)
+
+	var oxy, scrub int
+	oxyResid := math.MaxInt
+	scrubResid := math.MaxInt
+	for _, val := range vals {
+		var resid int
+		resid = val ^ oxyMask
+		if resid < oxyResid {
+			oxy = val
+			oxyResid = resid
+		}
+		resid = val ^ scrubMask
+		if resid < scrubResid {
+			scrub = val
+			scrubResid = resid
+		}
+	}
+	fmt.Println(oxy)
+	fmt.Println(scrub)
+
+	return oxy * scrub
 }
