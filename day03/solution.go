@@ -1,7 +1,6 @@
 package day03
 
 import (
-	"math"
 	"strconv"
 	"strings"
 )
@@ -45,43 +44,48 @@ func Part1(input string) int {
 
 func Part2(input string) int {
 	vals, bits := parseInput(input)
-	var oxyMask, scrubMask int
-	for bit := 0; bit < bits; bit++ {
-		mask := 1 << bit
-		cnt := 0
+
+	var oxyMask, lastOxyVal int
+	for bit := bits; bit > 0; bit-- {
+		knownMask := ((1 << bits) - 1) ^ ((1 << bit) - 1)
+		mask := 1 << (bit - 1)
+		var zeroes, ones int
 		for _, val := range vals {
-			if val&mask != 0 {
-				cnt++
+			if val&knownMask != oxyMask {
+				continue
+			}
+			lastOxyVal = val
+			if val&mask == 0 {
+				zeroes++
+			} else {
+				ones++
 			}
 		}
-		if cnt >= len(vals)/2 {
+		if ones >= zeroes {
 			oxyMask += mask
 		}
-		if cnt <= len(vals)/2 {
+	}
+
+	var scrubMask, lastScrubVal int
+	for bit := bits; bit > 0; bit-- {
+		knownMask := ((1 << bits) - 1) ^ ((1 << bit) - 1)
+		mask := 1 << (bit - 1)
+		var zeroes, ones int
+		for _, val := range vals {
+			if val&knownMask != scrubMask {
+				continue
+			}
+			lastScrubVal = val
+			if val&mask == 0 {
+				zeroes++
+			} else {
+				ones++
+			}
+		}
+		if ones < zeroes {
 			scrubMask += mask
 		}
 	}
-	// fmt.Println(oxyMask)
-	// fmt.Println(scrubMask)
 
-	var oxy, scrub int
-	oxyResid := math.MaxInt
-	scrubResid := math.MaxInt
-	for _, val := range vals {
-		var resid int
-		resid = val ^ oxyMask
-		if resid < oxyResid {
-			oxy = val
-			oxyResid = resid
-		}
-		resid = val ^ scrubMask
-		if resid < scrubResid {
-			scrub = val
-			scrubResid = resid
-		}
-	}
-	// fmt.Println(oxy)
-	// fmt.Println(scrub)
-
-	return oxy * scrub
+	return lastOxyVal * lastScrubVal
 }
