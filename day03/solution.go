@@ -1,6 +1,7 @@
 package day03
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -46,10 +47,12 @@ func Part2(input string) int {
 	vals, bits := parseInput(input)
 
 	var oxyMask, lastOxyVal int
-	for bit := bits; bit > 0; bit-- {
+	for bit := bits; bit >= 0; bit-- {
 		knownMask := ((1 << bits) - 1) ^ ((1 << bit) - 1)
-		mask := 1 << (bit - 1)
-		var zeroes, ones int
+		var mask, zeroes, ones int
+		if bit > 0 {
+			mask = 1 << (bit - 1)
+		}
 		for _, val := range vals {
 			if val&knownMask != oxyMask {
 				continue
@@ -67,10 +70,12 @@ func Part2(input string) int {
 	}
 
 	var scrubMask, lastScrubVal int
-	for bit := bits; bit > 0; bit-- {
+	for bit := bits; bit >= 0; bit-- {
 		knownMask := ((1 << bits) - 1) ^ ((1 << bit) - 1)
-		mask := 1 << (bit - 1)
-		var zeroes, ones int
+		var mask, zeroes, ones int
+		if bit > 0 {
+			mask = 1 << (bit - 1)
+		}
 		for _, val := range vals {
 			if val&knownMask != scrubMask {
 				continue
@@ -86,6 +91,8 @@ func Part2(input string) int {
 			scrubMask += mask
 		}
 	}
+
+	fmt.Println(oxyMask, lastOxyVal, scrubMask, lastScrubVal)
 
 	return lastOxyVal * lastScrubVal
 }
