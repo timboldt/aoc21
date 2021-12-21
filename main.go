@@ -14,6 +14,7 @@ import (
 	"github.com/timboldt/aoc21/day04"
 	"github.com/timboldt/aoc21/day05"
 	"github.com/timboldt/aoc21/day06"
+	"github.com/timboldt/aoc21/day07"
 )
 
 func main() {
@@ -71,6 +72,9 @@ func main() {
 	case 6:
 		part1 = day06.Part1(problemInput)
 		part2 = day06.Part2(problemInput)
+	case 7:
+		part1 = day07.Part1(problemInput)
+		part2 = day07.Part2(problemInput)
 	default:
 		fmt.Printf("Day %02d is not implemented yet.\n", day)
 		os.Exit(1)
