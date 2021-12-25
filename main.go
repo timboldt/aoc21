@@ -20,6 +20,19 @@ import (
 	"github.com/timboldt/aoc21/day10"
 	"github.com/timboldt/aoc21/day11"
 	"github.com/timboldt/aoc21/day12"
+	"github.com/timboldt/aoc21/day13"
+	"github.com/timboldt/aoc21/day14"
+	"github.com/timboldt/aoc21/day15"
+	"github.com/timboldt/aoc21/day16"
+	"github.com/timboldt/aoc21/day17"
+	"github.com/timboldt/aoc21/day18"
+	"github.com/timboldt/aoc21/day19"
+	"github.com/timboldt/aoc21/day20"
+	"github.com/timboldt/aoc21/day21"
+	"github.com/timboldt/aoc21/day22"
+	"github.com/timboldt/aoc21/day23"
+	"github.com/timboldt/aoc21/day24"
+	"github.com/timboldt/aoc21/day25"
 )
 
 func main() {
@@ -95,6 +108,45 @@ func main() {
 	case 12:
 		part1 = day12.Part1(problemInput)
 		part2 = day12.Part2(problemInput)
+	case 13:
+		part1 = day13.Part1(problemInput)
+		part2 = day13.Part2(problemInput)
+	case 14:
+		part1 = day14.Part1(problemInput)
+		part2 = day14.Part2(problemInput)
+	case 15:
+		part1 = day15.Part1(problemInput)
+		part2 = day15.Part2(problemInput)
+	case 16:
+		part1 = day16.Part1(problemInput)
+		part2 = day16.Part2(problemInput)
+	case 17:
+		part1 = day17.Part1(problemInput)
+		part2 = day17.Part2(problemInput)
+	case 18:
+		part1 = day18.Part1(problemInput)
+		part2 = day18.Part2(problemInput)
+	case 19:
+		part1 = day19.Part1(problemInput)
+		part2 = day19.Part2(problemInput)
+	case 20:
+		part1 = day20.Part1(problemInput)
+		part2 = day20.Part2(problemInput)
+	case 21:
+		part1 = day21.Part1(problemInput)
+		part2 = day21.Part2(problemInput)
+	case 22:
+		part1 = day22.Part1(problemInput)
+		part2 = day22.Part2(problemInput)
+	case 23:
+		part1 = day23.Part1(problemInput)
+		part2 = day23.Part2(problemInput)
+	case 24:
+		part1 = day24.Part1(problemInput)
+		part2 = day24.Part2(problemInput)
+	case 25:
+		part1 = day25.Part1(problemInput)
+		part2 = day25.Part2(problemInput)
 	default:
 		fmt.Printf("Day %02d is not implemented yet.\n", day)
 		os.Exit(1)
