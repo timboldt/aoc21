@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import heapq
-import numpy
 import os.path
 
 
