@@ -1,2 +1,13 @@
+name = "AoC2021"
+uuid = "076d9fc7-c89b-4a87-a7ac-106d5959d163"
+authors = ["Tim Boldt <tim.boldt@gmail.com>"]
+version = "0.1.0"
+
 [deps]
-Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+InlineTest = "bd334432-b1e7-49c7-a2dc-dd9149e4ebd6"
+ReTest = "e0db7c4e-2690-44b9-bad6-7687da720f89"
+
+[compat]
+InlineTest = "0.2"
+ReTest = "0.3"
+julia = "1.6"
